@@ -7,7 +7,7 @@ from django.shortcuts import render
 from tutors.models import Teachers, Goals, Monday
 
 
-class MainView(ListView):
+class MainView(View):
     def get(self, request):
         teachers_list = list(Teachers.objects.values())
         context = {
@@ -22,7 +22,7 @@ class AboutView(View):
         goals = Goals.objects.get(id=teacher_id)
         monday = model_to_dict(Monday.objects.get(id=teacher_id))
         m_time = list()
-        free_time = 8
+        free_time = 6
         for key in monday:
             if monday[key] and key != 'id':
                 m_time.append(str(free_time)+':00'+' свободно')
@@ -50,4 +50,13 @@ class GoalsView(View):
         }
         return render(request, "tutors/goal.html", context)
 
+
+class BookingView(View):
+    def get(self, request, teacher_id, teacher_free_time):
+        teach = Teachers.objects.get(id=teacher_id)
+        context = {
+            'teachers': teach,
+            'free_time': teacher_free_time,
+        }
+        return render(request, "tutors/booking.html", context)
 

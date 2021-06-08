@@ -68,7 +68,7 @@
               </div>
               {% if monday %}
                   {% for m_key in monday %}
-                    <a href="#" class="btn btn-outline-success mr-2">{{m_key}} </a>
+                    <a href="/booking/{{ teacher.id }}/monday" class="btn btn-outline-success mr-2">{{m_key}} </a>
                   {% endfor %}
               {% else %}
                   <p>Нет свободных уроков</p>
