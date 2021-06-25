@@ -55,8 +55,19 @@ class BookingView(View):
     def get(self, request, teacher_id, teacher_free_time):
         teach = Teachers.objects.get(id=teacher_id)
         context = {
-            'teachers': teach,
+            'teacher': teach,
             'free_time': teacher_free_time,
         }
         return render(request, "tutors/booking.html", context)
+
+
+class BookingDoneView(View):
+    def get(self, request, time, name, number):
+        context = {
+            'time': time,
+            'name': name,
+            'number': number,
+        }
+        return render(request, "tutors/booking_done.html", context)
+
 
