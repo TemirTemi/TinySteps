@@ -21,5 +21,5 @@ urlpatterns = [
     path('profile/<int:teacher_id>', AboutView.as_view()),
     path('teachers/<str:teacher_goals>', GoalsView.as_view()),
     path('booking/<int:teacher_id>/<str:teacher_free_time>', BookingView.as_view()),
-    path('booking_done/<str:time>/<str:name>,<str:number>', BookingDoneView.as_view()),
+    path('booking_done/<int:teacher_id>/<str:time>/<str:name>,<str:number>', BookingDoneView.as_view()),
 ]

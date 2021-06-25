@@ -62,7 +62,12 @@ class BookingView(View):
 
 
 class BookingDoneView(View):
-    def get(self, request, time, name, number):
+    def get(self, request, teacher_id, time, name, number):
+        time = 'time_'+time+'_00'
+        monday = model_to_dict(Monday.objects.get(id=teacher_id))
+        for key in monday:
+            if monday[key] == time:
+                monday[key].update(time=False)
         context = {
             'time': time,
             'name': name,
