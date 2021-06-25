@@ -25,7 +25,7 @@ class AboutView(View):
         free_time = 6
         for key in monday:
             if monday[key] and key != 'id':
-                m_time.append(str(free_time)+':00'+' свободно')
+                m_time.append(free_time)
             free_time += 2
 
         context = {
